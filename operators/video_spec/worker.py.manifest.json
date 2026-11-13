@@ -1,0 +1,18 @@
+{
+  "protocolVersion": "1.0",
+  "id": "video-spec-standard",
+  "name": "视频规格检查（标准协议）",
+  "description": "检查 Raw MP4 的短边、视频时长和平均帧率；输出实际测量值、阈值及问题证据。",
+  "owner": "data-quality",
+  "entrypoint": "operators/video_spec/worker.py",
+  "kind": "check",
+  "inputProfile": "ego.raw",
+  "requiredAssets": ["video"],
+  "outputProtocol": "1.0",
+  "timeoutSeconds": 300,
+  "parameters": [
+    {"key": "min_short_edge_px", "label": "最小短边", "type": "number", "defaultValue": 720, "min": 1, "max": 9007199254740991, "unit": "px"},
+    {"key": "min_duration_s", "label": "最小时长", "type": "number", "defaultValue": 1, "min": 0, "max": 9007199254740991, "unit": "s"},
+    {"key": "min_fps", "label": "最低平均帧率（0 表示不检查）", "type": "number", "defaultValue": 0, "min": 0, "max": 9007199254740991, "unit": "fps"}
+  ]
+}
